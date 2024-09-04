@@ -19,8 +19,22 @@ app.use(express.json()); //call the function so that it parses any json data tha
 
 app.use(morgan("dev"));
 
-app.get("/", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "..", "dist", "index.html"));
+// app.get("/", (req, res) => {
+//   res.sendFile(path.resolve(__dirname, "..", "dist", "index.html"));
+// });
+
+// app.get("/test", (req, res) => {
+//   res.send("Test Page was hit");
+// });
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "dist", "index.html"));
+}); //why do I need this?
+
+app.use((req, res) => {
+  res.status(404).send("404 - Page Not Found");
+  // or
+  // res.status(404).json({ error: "Page Not Found" });
 });
 
 const port = process.env.PORT || 3000;

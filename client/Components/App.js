@@ -1,11 +1,14 @@
 import React from "react";
-import Header from "./Header/Header";
+import { Routes, Route } from "react-router-dom";
+import { Home } from "./Home/Home";
 
 export const App = () => {
   return (
     <div>
-      <Header />
-      App Component
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/test" element={<div>Test page</div>} />
+      </Routes>
     </div>
   );
 };
