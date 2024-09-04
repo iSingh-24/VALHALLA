@@ -9,8 +9,6 @@ const morgan = require("morgan");
 
 const app = express();
 
-// app.use(express.static(path.join(__dirname, "../public"))); // we need the ../public because the public directory is located outside of this directory
-
 app.use(express.static(path.resolve(__dirname, "..", "dist")));
 
 app.use(express.urlencoded({ extended: false })); //this will parse url encoded data
@@ -21,6 +19,17 @@ app.use(morgan("dev"));
 
 app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "..", "dist", "index.html"));
+}); //see if there's a better way then this or how did we used to do this before with router?
+
+// Error hander
+app.use((err, req, res) => {
+  console.error(err.stack);
+  res.status(err.status || 500).send({ error: err.message });
+});
+
+// Handle 404
+app.use((req, res) => {
+  res.status(404).send("<h1> Page not found</h1>");
 });
 
 const port = process.env.PORT || 3000;
