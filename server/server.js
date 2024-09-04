@@ -9,8 +9,6 @@ const morgan = require("morgan");
 
 const app = express();
 
-// app.use(express.static(path.join(__dirname, "../public"))); // we need the ../public because the public directory is located outside of this directory
-
 app.use(express.static(path.resolve(__dirname, "..", "dist")));
 
 app.use(express.urlencoded({ extended: false })); //this will parse url encoded data
@@ -19,17 +17,14 @@ app.use(express.json()); //call the function so that it parses any json data tha
 
 app.use(morgan("dev"));
 
-// app.get("/", (req, res) => {
-//   res.sendFile(path.resolve(__dirname, "..", "dist", "index.html"));
-// });
-
-// app.get("/test", (req, res) => {
-//   res.send("Test Page was hit");
-// });
+// app.get("/api/test", (req, res) => {
+//   console.log("Test page was hit");
+//   res.send({ hello: "world" });
+// }); //you need a / before api for this page to get hit
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "dist", "index.html"));
-}); //why do I need this?
+  res.sendFile(path.resolve(__dirname, "..", "dist", "index.html"));
+}); //see if there's a better way then this or how did we used to do this before with router?
 
 app.use((req, res) => {
   res.status(404).send("404 - Page Not Found");
