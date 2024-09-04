@@ -22,13 +22,13 @@ app.get("/", (req, res) => {
 }); //see if there's a better way then this or how did we used to do this before with router?
 
 // Error hander
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   console.error(err.stack);
   res.status(err.status || 500).send({ error: err.message });
 });
 
 // Handle 404
-app.use((req, res, next) => {
+app.use((req, res) => {
   res.status(404).send("<h1> Page not found</h1>");
 });
 
