@@ -17,19 +17,19 @@ app.use(express.json()); //call the function so that it parses any json data tha
 
 app.use(morgan("dev"));
 
-// app.get("/api/test", (req, res) => {
-//   console.log("Test page was hit");
-//   res.send({ hello: "world" });
-// }); //you need a / before api for this page to get hit
-
-app.get("*", (req, res) => {
+app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "..", "dist", "index.html"));
 }); //see if there's a better way then this or how did we used to do this before with router?
 
-app.use((req, res) => {
-  res.status(404).send("404 - Page Not Found");
-  // or
-  // res.status(404).json({ error: "Page Not Found" });
+// Error hander
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(err.status || 500).send({ error: err.message });
+});
+
+// Handle 404
+app.use((req, res, next) => {
+  res.status(404).send("<h1> Page not found</h1>");
 });
 
 const port = process.env.PORT || 3000;
