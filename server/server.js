@@ -6,6 +6,7 @@
 const path = require("path");
 const express = require("express");
 const morgan = require("morgan");
+const apiRoutes = require("./api/router");
 
 const app = express();
 
@@ -16,6 +17,8 @@ app.use(express.urlencoded({ extended: false })); //this will parse url encoded 
 app.use(express.json()); //call the function so that it parses any json data that we may receieve from req.body in the routes
 
 app.use(morgan("dev"));
+
+app.use("/api", apiRoutes);
 
 app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "..", "dist", "index.html"));
