@@ -1,5 +1,5 @@
 const db = require("../server/db/db");
-const User = require("../server/db/models/User");
+const User = require("../server/db/Models/User");
 
 const init = async () => {
   try {
