@@ -8,15 +8,4 @@ const db = new Sequelize(
   config
 );
 
-const init = async () => {
-  try {
-    await db.sync({ force: true }); //this will drop and recreate tables
-    console.log("Database was synced successfully");
-  } catch (err) {
-    console.log(`Error syncing the database: ${err}`);
-  }
-};
-
-init();
-
 module.exports = db;
