@@ -8,7 +8,6 @@ html {
   margin: 0; /* Removes default margin */
   padding: 0; /* Removes default padding */
   overflow: hidden; /* Prevents scrollbars if the image doesn't fit exactly */
-  color: white;
 }
 
 a {
@@ -18,4 +17,9 @@ a {
 a:hover {
   color: lightgray;
   text-decoration: underline;
+}
+
+.test {
+  color: white;
+  font-size: 1.5rem;
 }
