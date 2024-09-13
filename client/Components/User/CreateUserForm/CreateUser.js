@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { createUser } from "../../../ApiCalls/User/userUtils";
+/**TODO:
+ * 1) Add a possible Modal to this Component
+ */
 
 export const CreateUser = () => {
   const [firstName, setFirstName] = useState("");
@@ -20,11 +24,19 @@ export const CreateUser = () => {
     setEmail(value);
   };
 
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
+
     console.log(
       `User with credentials ${firstName} ${lastName} ${email} was succcessfully sent to the backend`
     );
+
+    const createdUser = await createUser({ firstName, lastName, email });
+
+    if (createdUser.response && createdUser.response.data) {
+      alert(createdUser.response.data);
+    }
+
     setFirstName("");
     setLastName("");
     setEmail("");
@@ -42,6 +54,7 @@ export const CreateUser = () => {
           placeholder="enter first name here"
           required
           onChange={(e) => handleFirstNameChange(e)}
+          value={firstName}
         />
         <br></br>
         <input
@@ -49,6 +62,7 @@ export const CreateUser = () => {
           placeholder="enter last name here"
           required
           onChange={(e) => handleLastNameChange(e)}
+          value={lastName}
         />
         <br></br>
         <input
@@ -56,6 +70,7 @@ export const CreateUser = () => {
           placeholder="enter email name here"
           required
           onChange={(e) => handleEmailChange(e)}
+          value={email}
         />
         <br></br>
         <button type="submit">SignUp</button>

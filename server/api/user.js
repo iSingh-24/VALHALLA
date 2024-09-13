@@ -5,6 +5,27 @@ router.get("/", (req, res) => {
   res.send("Router get route for /api was hit!");
 });
 
+router.post("/create", async (req, res) => {
+  const { email, firstName, lastName } = req.body;
+  try {
+    const { dataValues: createdUser } = await User.create({
+      firstName,
+      lastName,
+      email,
+    });
+
+    res.send(createdUser);
+  } catch (error) {
+    const { name } = error;
+
+    if (name === "SequelizeUniqueConstraintError") {
+      return res.status(400).send("Email is already in use");
+    }
+
+    res.status(500).json({ message: "Server Error" });
+  }
+});
+
 //user routes
 
 router.get("/users", async (req, res) => {
