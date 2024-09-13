@@ -1,0 +1,21 @@
+body,
+html {
+  background-image: url("../../public/assets/wallpaper_vikings_wolves_of_migard_02_1920x1080.jpg"); /* Relative path to your image */
+  background-size: cover; /* Ensures the image covers the entire page */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  height: 100%; /* Ensures the body and html take up the full height */
+  margin: 0; /* Removes default margin */
+  padding: 0; /* Removes default padding */
+  overflow: hidden; /* Prevents scrollbars if the image doesn't fit exactly */
+  color: white;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: lightgray;
+  text-decoration: underline;
+}

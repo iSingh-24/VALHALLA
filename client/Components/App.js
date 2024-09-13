@@ -6,9 +6,11 @@ import { WorkoutList } from "./WorkoutList/WorkoutList";
 import { Workout } from "./Workout/Workout";
 import { Login } from "./Login/Login";
 import { SignUp } from "./SignUp/Signup";
+import "./app.css";
+
 export const App = () => {
   return (
-    <div>
+    <div className="test">
       <Header />
       <div>
         <Routes>
