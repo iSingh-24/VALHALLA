@@ -8,7 +8,6 @@ export const CreateUser = () => {
   const handleFirstNameChange = ({ target }) => {
     const { value } = target;
     setFirstName(value);
-    console.log(value, "here is value");
   };
 
   const handleLastNameChange = ({ target }) => {
