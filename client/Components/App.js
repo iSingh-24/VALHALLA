@@ -8,6 +8,10 @@ import { Login } from "./Login/Login";
 import { SignUp } from "./SignUp/Signup";
 import "./app.css";
 
+/**
+ * TODO: Eventually cleanup the test className in the main div for this component
+ */
+
 export const App = () => {
   return (
     <div className="test">
