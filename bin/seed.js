@@ -1,5 +1,6 @@
 const db = require("../server/db/db");
-const User = require("../server/db/Models/User");
+const User = require("../server/db/models/User");
+const Workout = require("../server/db/models/Workout");
 
 const init = async () => {
   try {
@@ -11,10 +12,20 @@ const init = async () => {
       { firstName: "Thor", lastName: "Vinland", email: "Valhalla@gmail.com" },
     ];
 
-    const testUserPromises = testUsers.map((user) => User.create(user)); //this will map over and create a user object for each user
-    const createdTestUsers = await Promise.all(testUserPromises); //this will wait for the creation of the users to be complete
+    const testWorkouts = [
+      { name: "Sprints" },
+      { name: "Depth Jumps" },
+      { name: "Jump Squats" },
+    ];
 
-    console.log("Users were created successfully ");
+    const testUserPromises = testUsers.map((user) => User.create(user)); //this will map over and create a user object for each user
+    const testWorkoutPromises = testWorkouts.map((workout) =>
+      Workout.create(workout)
+    );
+    const createdTestUsers = await Promise.all(testUserPromises); //this will wait for the creation of the users to be complete
+    const createdTestWorkouts = await Promise.all(testWorkoutPromises);
+
+    console.log("Users and Workouts were created successfully ");
   } catch (err) {
     console.log(`Error syncing the database: ${err}`);
   }
