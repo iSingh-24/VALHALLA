@@ -27,10 +27,6 @@ export const CreateUser = () => {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
 
-    console.log(
-      `User with credentials ${firstName} ${lastName} ${email} was succcessfully sent to the backend`
-    );
-
     const createdUser = await createUser({ firstName, lastName, email });
 
     if (createdUser.response && createdUser.response.data) {
