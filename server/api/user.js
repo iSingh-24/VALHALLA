@@ -8,7 +8,9 @@ router.get("/", (req, res) => {
 //user routes
 
 router.get("/users", async (req, res) => {
-  const allUsers = await User.findAll();
+  const allUsers = await User.findAll({
+    attributes: ["firstName", "lastName", "id", "email"],
+  });
   res.send(allUsers);
 });
 
