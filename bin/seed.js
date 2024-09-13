@@ -6,9 +6,9 @@ const init = async () => {
     await db.sync({ force: true }); //this will drop and recreate tables
     console.log("Database was synced successfully");
     const testUsers = [
-      { firstName: "Madara", lastName: "Uchiha" },
-      { firstName: "Ip", lastName: "Bryant" },
-      { firstName: "Thor", lastName: "Vinland" },
+      { firstName: "Madara", lastName: "Uchiha", email: "uchiha@gmail.com" },
+      { firstName: "Ip", lastName: "Bryant", email: "Mamba@gmail.com" },
+      { firstName: "Thor", lastName: "Vinland", email: "Valhalla@gmail.com" },
     ];
 
     const testUserPromises = testUsers.map((user) => User.create(user)); //this will map over and create a user object for each user
