@@ -11,4 +11,8 @@ router.get("/workouts", async (req, res) => {
   res.send(allWorkouts);
 });
 
+router.get("/:id", (req, res) => {
+  res.send("Single Workout Path was hit");
+});
+
 module.exports = router;
