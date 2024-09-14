@@ -1,5 +1,5 @@
 import React from "react";
 
-export const Workout = () => {
-  return <div>Single Workout Component</div>;
+export const Workout = ({ name }) => {
+  return <>{name}</>;
 };

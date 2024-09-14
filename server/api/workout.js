@@ -8,7 +8,11 @@ router.get("/", async (req, res) => {
 router.get("/workouts", async (req, res) => {
   const allWorkouts = await Workout.findAll({ attributes: ["name", "id"] });
 
-  res.send(allWorkouts);
+  const filteredWorkouts = allWorkouts.map((workout) => workout.dataValues);
+
+  console.log(filteredWorkouts, "here are filtered workouts");
+
+  res.send(filteredWorkouts);
 });
 
 router.get("/:id", (req, res) => {
