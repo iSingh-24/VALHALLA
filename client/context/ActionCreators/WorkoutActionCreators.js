@@ -1,0 +1,1 @@
+export const GET_ALL_WORKOUTS = "GET_ALL_WORKOUTS";
