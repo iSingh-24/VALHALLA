@@ -5,6 +5,7 @@ import "./header.css";
 
 export const Header = () => {
   const location = useLocation(); //useLocation will show give the params for the current path
+  //console.log(location);
   return (
     <div className="header">
       <h1 className="logo">VALHALLA</h1>
