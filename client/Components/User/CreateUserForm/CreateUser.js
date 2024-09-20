@@ -1,10 +1,27 @@
 import React, { useState } from "react";
 import { createUser } from "../../../ApiCalls/User/userUtils";
+import { GlobalUserState } from "../../../context/UserContext";
 /**TODO:
  * 1) Add a possible Modal to this Component
+ * 2) Brush up on useEffect Hook and other life cycle methods
  */
 
 export const CreateUser = () => {
+  const { state, dispatch } = GlobalUserState();
+  // console.log(state, "here is state");
+  // console.log(dispatch, "here is dispatch");
+
+  //to dispatch an action you can do it as the following
+
+  /**
+   *
+   * dispatch({type:"SET_USER", payload:"TEST USER"})
+   *
+   * in our case we are going to grab the user from the token that will be logged in. In the case wher e
+   * we set all the current users or items or workouts, we can have a dispatch action that will add to the payload for
+   * all the workouts. This will be done in a useEffect hook upon the first load of the component.
+   *
+   */
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
