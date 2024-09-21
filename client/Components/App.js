@@ -8,6 +8,8 @@ import { Login } from "./Login/Login";
 import { SignUp } from "./SignUp/Signup";
 import "./app.css";
 
+import { CreateWorkout } from "./Workout/CreateWorkoutForm/CreateWorkout";
+
 /**
  * TODO: Eventually cleanup the test className in the main div for this component
  */
@@ -25,6 +27,8 @@ export const App = () => {
           <Route path="/login" element={<Login />} />
         </Routes>
       </div>
+
+      <CreateWorkout />
     </div>
   );
 };

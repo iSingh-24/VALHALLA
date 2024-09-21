@@ -14,6 +14,7 @@ const Workout = db.define("workout", {
     validate: {
       notEmpty: true,
     },
+    unique: true,
   },
 });
 
