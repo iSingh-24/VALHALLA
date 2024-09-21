@@ -12,9 +12,10 @@ const createWorkout = async (workout) => {
       "/api/workout/create",
       workout
     );
-
+    console.log("this route was hit as well");
     return createdWorkout;
   } catch (err) {
+    console.log("there was an error here");
     return err;
   }
 };

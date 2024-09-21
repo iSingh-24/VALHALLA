@@ -7,7 +7,7 @@ export const CreateWorkout = () => {
   useEffect(() => {}, []);
 
   const handleWorkoutName = ({ target }) => {
-    setWorkout(target);
+    setWorkout(target.value);
   };
 
   const onWorkoutSubmit = async (e) => {
@@ -27,6 +27,7 @@ export const CreateWorkout = () => {
     <div>
       <form onSubmit={onWorkoutSubmit}>
         <label>Create Workout</label>
+        <br></br>
         <input
           type="text"
           placeholder="enter workout name"
@@ -34,6 +35,7 @@ export const CreateWorkout = () => {
           value={workout}
           required
         />
+        <br></br>
         <button type="submit">Create Workout</button>
       </form>
     </div>
