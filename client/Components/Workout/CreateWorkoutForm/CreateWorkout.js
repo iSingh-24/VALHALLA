@@ -18,7 +18,6 @@ export const CreateWorkout = () => {
     if (createdWorkout.response && createdWorkout.response.data) {
       alert(createdWorkout.response.data);
     }
-    //create a util function to send the workout to the backend with a post request to database
 
     setWorkout("");
   };
