@@ -6,4 +6,17 @@ const getWorkouts = async () => {
   return workouts;
 };
 
-export { getWorkouts };
+const createWorkout = async (workout) => {
+  try {
+    const { data: createdWorkout } = await axios.post(
+      "/api/workout/create",
+      workout
+    );
+
+    return createdWorkout;
+  } catch (err) {
+    return err;
+  }
+};
+
+export { getWorkouts, createWorkout };
