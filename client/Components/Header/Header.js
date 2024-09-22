@@ -8,10 +8,12 @@ export const Header = () => {
   //console.log(location);
   return (
     <div className="header">
-      <h1 className="logo">VALHALLA</h1>
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <h1 className="logo">VALHALLA</h1>
+      </Link>
       <div className="nav-links">
         <Link to="/">Home</Link>
-        <Link to="/login">Login</Link>
+        <Link to="/signup">Signup</Link>
         <Link to="workoutlist">Workout List</Link>
       </div>
     </div>

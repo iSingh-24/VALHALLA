@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { createUser } from "../../../ApiCalls/User/userUtils";
 import { GlobalUserState } from "../../../context/UserContext";
+
 /**TODO:
  * 1) Add a possible Modal to this Component
  * 2) Brush up on useEffect Hook and other life cycle methods
@@ -88,7 +90,7 @@ export const CreateUser = () => {
         <br></br>
         <button type="submit">SignUp</button>
       </form>
-      <p>Already have an account? Click here to Login</p>
+      <Link to="/login">Already have an account? Click here to Login</Link>
     </div>
   );
 };
