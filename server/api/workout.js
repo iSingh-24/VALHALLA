@@ -36,4 +36,15 @@ router.get("/:id", (req, res) => {
   res.send("Single Workout Path was hit");
 });
 
+router.delete("/delete", async (req, res, next) => {
+  try {
+    const { workoutId } = req.body;
+    const deletedWorkout = await Workout.findByPk(workoutId);
+    await deletedWorkout.destroy();
+    res.send("Workout was successfully destroyed");
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;
