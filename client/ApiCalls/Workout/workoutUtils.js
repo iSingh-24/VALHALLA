@@ -19,4 +19,17 @@ const createWorkout = async (workout) => {
   }
 };
 
-export { getWorkouts, createWorkout };
+const deleteWorkout = async (workoutId) => {
+  try {
+    const deletedWorkout = await axios.delete("api/workout/delete", {
+      data: { workoutId },
+    });
+
+    //axios.delete('/',{data:{enter data to pass here}})
+    //above is the proper way that req.body will be able to be accessed in the backend routes.
+  } catch (err) {
+    console.log(`There was a problem. The error is \n ${err}`);
+  }
+};
+
+export { getWorkouts, createWorkout, deleteWorkout };
