@@ -1,9 +1,15 @@
 const router = require("express").Router();
 const User = require("../db/models/User");
 
-router.get("/", (req, res) => {
-  res.send("Router get route for /api was hit!");
+router.get("/", (req, res, next) => {
+  try {
+    res.send("Router get route for /api was hit!");
+  } catch (err) {
+    next(err);
+  }
 });
+
+//eventually I want to just use the middleware for next(err) instad of the way I am sending the error in my try catch below
 
 router.post("/create", async (req, res) => {
   const { email, firstName, lastName } = req.body;
