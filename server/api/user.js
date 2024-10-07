@@ -28,18 +28,36 @@ router.post("/create", async (req, res) => {
 
 //user routes
 
-router.get("/users", async (req, res) => {
-  const allUsers = await User.findAll({
-    attributes: ["firstName", "lastName", "id", "email"],
-  });
-  res.send(allUsers);
+router.get("/users", async (req, res, next) => {
+  try {
+    const allUsers = await User.findAll({
+      attributes: ["firstName", "lastName", "id", "email"],
+    });
+    res.send(allUsers);
+  } catch (err) {
+    next(err);
+  }
 });
 
 //PLACE OTHER GET ROUTES ABOVE THIS SO THE :ID DOESN'T IGNORE ALL OTHER ROUTES THAT WILL HAVE /user
 
-router.get("/user/:id", (req, res) => {
-  const { id } = req.params;
-  res.send(`User ${id} was hit`);
+router.get("/user/:id", (req, res, next) => {
+  try {
+    const { id } = req.params;
+    res.send(`User ${id} was hit`);
+  } catch (err) {
+    next(err);
+  }
+});
+
+//make sure this isn't a double route
+
+router.delete("user/:id", (req, res, next) => {
+  try {
+    res.send("Delete route was hit");
+  } catch (err) {
+    next(err);
+  }
 });
 
 module.exports = router;
