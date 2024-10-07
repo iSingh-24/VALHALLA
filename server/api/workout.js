@@ -1,18 +1,26 @@
 const router = require("express").Router();
 const Workout = require("../db/models/Workout");
 
-router.get("/", async (req, res) => {
-  res.send("Workout Page");
+router.get("/", async (req, res, next) => {
+  try {
+    res.send("Workout Page");
+  } catch (err) {
+    next(err);
+  }
 });
 
-router.get("/workouts", async (req, res) => {
-  const allWorkouts = await Workout.findAll({ attributes: ["name", "id"] });
+router.get("/workouts", async (req, res, next) => {
+  try {
+    const allWorkouts = await Workout.findAll({ attributes: ["name", "id"] });
 
-  const filteredWorkouts = allWorkouts.map((workout) => workout.dataValues);
+    const filteredWorkouts = allWorkouts.map((workout) => workout.dataValues);
 
-  console.log(filteredWorkouts, "here are filtered workouts");
+    console.log(filteredWorkouts, "here are filtered workouts");
 
-  res.send(filteredWorkouts);
+    res.send(filteredWorkouts);
+  } catch (err) {
+    next(err);
+  }
 });
 
 router.post("/create", async (req, res) => {
@@ -32,8 +40,12 @@ router.post("/create", async (req, res) => {
   }
 });
 
-router.get("/:id", (req, res) => {
-  res.send("Single Workout Path was hit");
+router.get("/:id", (req, res, next) => {
+  try {
+    res.send("Single Workout Path was hit");
+  } catch (err) {
+    next(err);
+  }
 });
 
 router.delete("/delete", async (req, res, next) => {
